@@ -18,6 +18,12 @@ on:
 jobs:
   python-ci:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: .src
+
+
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-python@v6
@@ -35,10 +41,10 @@ jobs:
 
     - name: Run tests    
       run: |
-        python .src/manage.py test
+        python manage.py test
 
     - name: Generate coverage report
-      run: coverage run .src/manage.py test
+      run: coverage run manage.py test
 
     - name: Display coverage report
       run: coverage report
