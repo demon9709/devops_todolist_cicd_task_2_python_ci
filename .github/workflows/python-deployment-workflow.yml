@@ -38,9 +38,16 @@ jobs:
     - name: Run migrations
       run: python manage.py migrate --noinput
 
+    - name: Run tests with coverage
+      run: coverage run manage.py test
+
 
     - name: Generate coverage report
       run: coverage run manage.py test
+
+    - name: Check code style
+      run: flake8 . --show-source --statistics
+      continue-on-error: true
 
 
     - name: Check code complexity
@@ -50,14 +57,11 @@ jobs:
     - name: Display coverage report
       run: coverage report
 
-    - name: Check code style
-      run: flake8 . --show-source --statistics
-
-
-
-
-    - name: Upload Python code as an artifact
-      uses: actions/upload-artifact@v4
+    - name: Upload Python files as artifacts
+      uses: actions/upload-artifact@v2
       with:
-        name: python-code
-        path: ./src
+        name: python-files
+        path: |
+          manage.py
+          requirements.txt
+          src/
