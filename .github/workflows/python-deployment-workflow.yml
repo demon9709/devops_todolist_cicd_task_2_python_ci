@@ -1,7 +1,7 @@
 name: Python Deployment Workflow
 
 
-run-name: ${{ github.actor }} - ${{ env.github.sha }}
+run-name: ${{ github.actor }} - ${{ github.sha }}
 
 
 env:
