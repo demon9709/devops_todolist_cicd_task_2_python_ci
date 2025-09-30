@@ -38,10 +38,10 @@ jobs:
 
     - name: Run tests    
       run: |
-        python manage.py test
+        python ./src/manage.py test
 
     - name: Generate coverage report
-      run: coverage run manage.py test
+      run: coverage run ./src/manage.py test
 
     - name: Display coverage report
       run: coverage report
